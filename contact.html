@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Kontakt</title>
+        <link rel="icon" type="image/x-icon" href="assets/img/Icons/favico.png" />
+        <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
+        <script src="https://kit.fontawesome.com/271c4bfbcf.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+        <script src="https://kit.fontawesome.com/271c4bfbcf.js" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+        <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    </head>
+    <body>
+        <div class="loader"> 
+            <img src="assets/img/logo_load.png" class="spinning-image" alt="loading image" />
+        </div>
+        <div id="scroll-up-btn">
+            <i class="fas fa-angle-up"></i>
+        </div>
+        <div id = "banner_contain">
+            <div id="banner_content">
+                <a href="#newsletter">Prijavi se na newsletter</a>
+                <a href="contact.html">Kontakt</a>
+            </div>
+        </div>
+        <div id="wrap_head">
+            <div id= "header">
+                <div id = "header_menu">
+                    <!--Dinamicki ispisan meni-->
+                </div>
+                <img src="assets/img/logo.png" alt="Site Logo"  width="15%" height="15%"/>
+                <input type="search" placeholder="Pretrazite ceo ChillFit" />
+            </div>
+            <div id="header_hover">
+                <!--Dinamicki ispisan sekundarni meni-->
+            </div> 
+        </div> 
+        <div id="kontakt">
+            <h2>Kontakt</h2>
+            <a href="tel:+381621626189"><i class="fas fa-phone-alt "></i>+381 62 1626 189</a>
+            <a href="mailto:aleksa.velickovic.5.20@ict.edu.rs"><i class="fas fa-envelope"></i>aleksa.velickovic.5.20@ict.edu.rs</a>
+            <p>Ponedeljak - Petak 08:00 - 18:00</p>
+            <h3>PIŠITE NAM</h3>
+            <p>* označava obavezno polje</p>
+            <form id="kontakt_forme" method="get" action="" onSubmit="return sabmituj()">
+                <p>Ime *</p>
+                <input type="text" id="tekst_ime" name="ime_ime" value=""/>
+                <span class="dangermsg"></span>
+                <p>Prezime *</p>
+                <input type="text" id="tekst_prezime" name="prezime_ime" value="" />
+                <span class="dangermsg"></span>
+                <p>E-mail * </p>
+                <input type="email" id="tekst_mejl" name="mejl_ime" value="" />
+                <span class="dangermsg"></span>
+                <p>Broj telefona</p>
+                <input type="password" id="lozinka" name="lozinka_ime" value="" />  
+                <span class="toggle-password" id="togglePassword">
+                    <img id="show" src="assets/img/Icons/hide.png" height="20px" width="20px" />
+                </span>
+                <span class="dangermsg" id="specijalni"></span>
+                <div id="chekovi">
+                    <p>Izaberite pol *</p>
+                    <span>M</span><input type="radio" id="polM" name="pol" />
+                    <span>Z</span><input type="radio" id="polZ" name="pol" />
+                </div>
+                <div id="countries">
+                </div>
+                <span class="dangermsg"></span>
+                <div id="cities">
+                </div>
+                <span class="dangermsg"></span>
+                <div id="agreements">
+                    <span>* Slazem se sa politikom privatnosti</span><input type="checkbox" id="politika" name="politikaName" />
+                    <span>Pristajem na slanje promo materijala putem mejla</span><input type="checkbox" id="ads" name="adsName" />
+                </div>
+                <span class="dangermsg"></span>
+                <textarea id="polje_tekst" name="polje_tekst_Ime" placeholder="Upisite poruku"></textarea>
+                <span class="dangermsg"></span>
+                <div id="potvrdi"><button type="submit" id="posalji" name="submit_name" disabled class="disabled">Potvrdi</button>
+                <span id="success">Uspešno ste poslali poruku!</span></div> 
+            </form>
+        </div>
+        <div id="footer_wrap">
+            <div id="linija"></div>
+            <div id="footer">
+
+                <!--Dinamicki ispisane kolone futera-->
+                <div id="footer_column_1" class="footer_column"></div>
+                <div id="footer_column_2" class="footer_column"></div>
+                <div id="footer_column_3" class="footer_column"></div>
+                <div id="footer_column_4" class="footer_column"></div>
+            </div>
+            <div id="last_banner">
+                <img src="assets/img/Icons/phone-call.png" width="32px" height="32px" alt="Phone Call" />
+                <p>Ponedeljak - Petak 08:00 - 18:00h</p>
+                <p>&copy;ICT</p>
+            </div>
+        </div>
+        
+        
+        <script src="assets/js/kontakt.js" type="text/javascript" language="javascript"></script>
+        <script src="assets/js/main.js" type="text/javascript" language="javascript"></script>
+    </body>
+</html>

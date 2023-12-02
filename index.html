@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Muskarci</title>
+        <link rel="icon" type="image/x-icon" href="assets/img/Icons/favico.png" />
+        <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
+        <script src="https://kit.fontawesome.com/271c4bfbcf.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    </head>
+    <body>
+        <!--<div id="loading-screen">
+            <div id="loading-spinner"></div>
+        </div>-->
+        <div class="loader">
+            <img src="assets/img/logo_load.png" class="spinning-image" alt="loading image" />
+        </div>
+        <div id="scroll-up-btn">
+            <i class="fas fa-angle-up"></i>
+        </div>
+        <div id = "banner_contain">
+            <div id="banner_content">
+                <a id="banner_text" href="#newsletter">Prijavi se na newsletter</a>
+                <a href="author.html">Autor</a>
+            </div>
+        </div>
+        <div id="wrap_head">
+            <div id= "header">
+                <div id = "header_menu">
+                    <!--Dinamicki ispisan meni-->
+                </div>
+                <img src="assets/img/logo.png" alt="Site Logo"  width="15%" height="15%"/>
+                <input type="search" placeholder="Pretrazite ceo ChillFit" />
+            </div>
+            <div id="header_hover">
+                <!--Dinamicki ispisan sekundarni meni-->
+            </div> 
+        </div>
+      
+        <div id="slider-container">
+            <div id="slider">
+           <!--Dinamicki ispisane slike-->
+            </div>
+            <div id="prev" class="custom-arrow"><img src="assets/img/arrow_left.png" alt="Previous arrow"></div>
+            <div id="next" class="custom-arrow"><img src="assets/img/arrow_right.png" alt="Next arrow"></div>
+            <div id="indicators-container"></div> 
+        </div>
+        <h1 class="h1" id="h1_1">NEW ARRIVALS</h1>
+        <div class="newArrivals" id="newArrivals_1">
+           <!--Dinamicki ispisani proizvodi sa racunatom cenom i popustima--> 
+        </div>
+        <div class="banners" id="banner_m">
+            <!--Dinamicki ispisani banneri-->
+        </div>
+        <h1 class="h1" id="h1_2">NOVEMBER FAVOURITES</h1>
+        <div class="newArrivals" id="newArrivals_2">
+            <!--Dinamicki ispisani proizvodi sa racunatom cenom i popustima--> 
+         </div>
+        <h1 class="h1"  id="brands_1">BRENDOVI KOJE VOLIMO</h1>
+        <div class="brands">
+            <div class="brands_we_love">
+                <a href="men.html">
+                <img src="assets/img/brands_we_love_1.jpg" alt="Brands we Love!" />
+            </a>
+            </div>
+            <div class="brands_we_love">
+                <a href="men.html">
+                    <img src="assets/img/brands_we_love_2.jpg" alt="Brands we Love!" />
+                </a>
+            </div>
+        </div>
+        <h1 class="h1" id="h1_3">ChillFit MUST HAVES</h1>
+        <div class="newArrivals" id="newArrivals_3">
+            <!--Dinamicki ispisani proizvodi sa racunatom cenom i popustima--> 
+         </div>
+        <div id="newsletter">
+            <div id="newsletter_content">
+                <h2>PRIJAVI SE NA NAŠ NEWSLETTER</h2>
+                <form method="get" id="form_news" name="form_news_name" onSubmit="return Proveri()">
+                    <input type="text" id="news-mail" name="news-mail_name" placeholder="Upiši svoj email" />
+                    <input type="submit" id="send_news" name="send_news_name" value="Prijava" class="disabled" disabled="disabled"/><br />
+                    <span class="danger" id="danger_1"></span>
+                    <input type="checkbox" id="news_agree" name="news_agree_name" /><span id="agree">Slažem se sa Politikom privatnosti</span>
+                    <span class="danger" id="danger_2"></span>
+                </form>
+            </div>
+        </div>
+        <div id="footer">
+            <!--Dinamicki ispisane kolone futera-->
+            <div id="footer_column_1" class="footer_column"></div>
+            <div id="footer_column_2" class="footer_column"></div>
+            <div id="footer_column_3" class="footer_column"></div>
+            <div id="footer_column_4" class="footer_column"></div>
+        </div>
+        <div id="last_banner">
+            <img src="assets/img/Icons/phone-call.png" width="32px" height="32px" alt="Phone Call" />
+            <p>Ponedeljak - Petak 08:00 - 18:00h</p>
+            <p>&copy;ICT</p>
+        </div>
+        <script language="javascript" type="text/javascript" src="assets/js/main.js"></script>
+    </body>
+</html>
