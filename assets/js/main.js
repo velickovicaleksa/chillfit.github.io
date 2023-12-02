@@ -255,7 +255,7 @@ for (let index in menu_header_links) {
 
 
 //Jquery slider
-function ImgWrite(sliderImg) {
+/*function ImgWrite(sliderImg) {
     let imgsContainer = document.getElementById("slider");
 
     for (index in sliderImg) {
@@ -270,7 +270,7 @@ function ImgWrite(sliderImg) {
     }
 }
 
-ImgWrite(sliderImg);
+ImgWrite(sliderImg);*/
 
 $(document).ready(function () {
     // Check if the element with class "typing" exists on the page
