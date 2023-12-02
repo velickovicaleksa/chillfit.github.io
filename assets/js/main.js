@@ -276,19 +276,23 @@ document.addEventListener("DOMContentLoaded",function(){
 
 
 //Jquery slider
-function ImgWrite(sliderImg){ //Dinamicko ispisivanje slika
-    let imgs = document.getElementById("slider");
-    let pics="";
-    for(index in sliderImg) {
-        pics+=`<div><img src="${sliderImg[index].src}${Number(index)+1}.jpg" alt="${sliderImg[index].alt}${index+1} " /></div>`;
+function ImgWrite(sliderImg) {
+    let imgsContainer = document.getElementById("slider");
+
+    for (index in sliderImg) {
+        let imgDiv = document.createElement("div");
+        let imgElement = document.createElement("img");
+
+        imgElement.src = `${sliderImg[index].src}${Number(index) + 1}.jpg`;
+        imgElement.alt = `${sliderImg[index].alt}${index + 1}`;
+
+        imgDiv.appendChild(imgElement);
+        imgsContainer.appendChild(imgDiv);
     }
-    if(imgs) {imgs.innerHTML = pics;}
-    
 }
+
 ImgWrite(sliderImg);
-$(document).ready(function(){
-    
-});
+
 
 
 function itemWrite(Content, containerID) {
