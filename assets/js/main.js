@@ -112,8 +112,7 @@ let menuHeader_secondary = [
     {id_match:5,href:"author.html",content:"O AUTORU"},
     {id_match:5,href:"https://velickovicaleksa.github.io/myportfolio/",content:"PORTFOLIO"},
 ];
-window.onload=function(){
-   
+
     var loader = document.querySelector('.loader');
 // Hide the loader after a delay
 setTimeout(function() {
@@ -140,7 +139,7 @@ setTimeout(function() {
         }
       }
     }, 2000);
-}
+
     
  
 // Change this to the number of milliseconds you want the loader to show
