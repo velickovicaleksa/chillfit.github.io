@@ -272,6 +272,75 @@ function ImgWrite(sliderImg) {
 
 ImgWrite(sliderImg);
 
+$(document).ready(function () {
+    // Check if the element with class "typing" exists on the page
+    if ($(".typing").length) {
+        var typed = new Typed(".typing", {
+            strings: ["Student.", "Developer.", "Basketball player.", "Designer.", "Freelancer"],
+            typeSpeed: 100,
+            backSpeed: 60,
+            loop: true
+        });
+    }
+    if ($("#button_toggle").length && $(".hidden_text").length) {
+        $("#button_toggle").click(function () {
+            $(".hidden_text").slideToggle(function () {
+                var buttonText = $(".hidden_text").is(":visible") ? "Show Less" : "Show More";
+                $("#button_toggle").text(buttonText);
+            });
+        });
+    }
+    var slider = $('#slider');
+    slider.slick({
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 2000,
+        prevArrow: $('#prev'),
+        nextArrow: $('#next'),
+        pauseOnFocus: false,
+        pauseOnHover: false,
+        pauseOnDotsHover: false,
+    });
+    // Add indicators dynamically
+    var indicatorsContainer = $('#indicators-container');
+    for (var i = 0; i < slider.slick('getSlick').slideCount; i++) {
+        indicatorsContainer.append('<div class="slider-indicator" data-index="' + i + '"></div>');
+    }
+    // Update indicators on slide change
+    slider.on('afterChange', function(event, slick, currentSlide){
+        $('.slider-indicator').removeClass('active-indicator');
+        $('.slider-indicator[data-index="' + currentSlide + '"]').addClass('active-indicator');
+    });
+    // Handle indicator click to navigate to the corresponding slide
+    indicatorsContainer.on('click', '.slider-indicator', function(){
+        var index = $(this).data('index');
+        slider.slick('slickGoTo', index);
+    });
+
+    if ($(".newArrivalsItem img").length) {
+        $(".newArrivalsItem img").css('transition', 'transform 0.3s ease');
+    
+        $(".newArrivalsItem").mouseover(function () {
+            $(this).find('img').css('transform', 'scale(1.15)');
+        });
+    
+        $(".newArrivalsItem").mouseout(function () {
+            $(this).find('img').css('transform', 'scale(1)');
+        });
+    }
+    $(window).on('load', function () {
+        $('#loading-screen').fadeOut('slow');
+    });
+    $(window).scroll(function () {
+        this.scrollY > 20 ? $("#wrap_head").addClass("sticky") : $("#wrap_head").removeClass("sticky"),
+        this.scrollY > 500 ? $("#scroll-up-btn").addClass("show") : $("#scroll-up-btn").removeClass("show");
+    });
+    $("#scroll-up-btn").click(function () {
+        $("html").animate({ scrollTop: 0 }), $("html").css("scrollBehavior", "auto");
+    });
+});
 
 
 function itemWrite(Content, containerID) {
@@ -462,75 +531,7 @@ function slider(sliderArr, containerID,interval) {
 slider(nizSlika,"pic",3000);
 slider(nizTeksta,"banner_text",5000);
 
-$(document).ready(function () {
-    // Check if the element with class "typing" exists on the page
-    if ($(".typing").length) {
-        var typed = new Typed(".typing", {
-            strings: ["Student.", "Developer.", "Basketball player.", "Designer.", "Freelancer"],
-            typeSpeed: 100,
-            backSpeed: 60,
-            loop: true
-        });
-    }
-    if ($("#button_toggle").length && $(".hidden_text").length) {
-        $("#button_toggle").click(function () {
-            $(".hidden_text").slideToggle(function () {
-                var buttonText = $(".hidden_text").is(":visible") ? "Show Less" : "Show More";
-                $("#button_toggle").text(buttonText);
-            });
-        });
-    }
-    var slider = $('#slider');
-    slider.slick({
-        infinite: true,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        autoplay: true,
-        autoplaySpeed: 2000,
-        prevArrow: $('#prev'),
-        nextArrow: $('#next'),
-        pauseOnFocus: false,
-        pauseOnHover: false,
-        pauseOnDotsHover: false,
-    });
-    // Add indicators dynamically
-    var indicatorsContainer = $('#indicators-container');
-    for (var i = 0; i < slider.slick('getSlick').slideCount; i++) {
-        indicatorsContainer.append('<div class="slider-indicator" data-index="' + i + '"></div>');
-    }
-    // Update indicators on slide change
-    slider.on('afterChange', function(event, slick, currentSlide){
-        $('.slider-indicator').removeClass('active-indicator');
-        $('.slider-indicator[data-index="' + currentSlide + '"]').addClass('active-indicator');
-    });
-    // Handle indicator click to navigate to the corresponding slide
-    indicatorsContainer.on('click', '.slider-indicator', function(){
-        var index = $(this).data('index');
-        slider.slick('slickGoTo', index);
-    });
 
-    if ($(".newArrivalsItem img").length) {
-        $(".newArrivalsItem img").css('transition', 'transform 0.3s ease');
-    
-        $(".newArrivalsItem").mouseover(function () {
-            $(this).find('img').css('transform', 'scale(1.15)');
-        });
-    
-        $(".newArrivalsItem").mouseout(function () {
-            $(this).find('img').css('transform', 'scale(1)');
-        });
-    }
-    $(window).on('load', function () {
-        $('#loading-screen').fadeOut('slow');
-    });
-    $(window).scroll(function () {
-        this.scrollY > 20 ? $("#wrap_head").addClass("sticky") : $("#wrap_head").removeClass("sticky"),
-        this.scrollY > 500 ? $("#scroll-up-btn").addClass("show") : $("#scroll-up-btn").removeClass("show");
-    });
-    $("#scroll-up-btn").click(function () {
-        $("html").animate({ scrollTop: 0 }), $("html").css("scrollBehavior", "auto");
-    });
-});
 
 
 
