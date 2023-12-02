@@ -252,26 +252,6 @@ for (let index in menu_header_links) {
 
 
 
-document.addEventListener("DOMContentLoaded",function(){
-    document.querySelectorAll('a').forEach(function(anchor) {
-        anchor.addEventListener('click', function(e) {
-            let href = this.getAttribute('href');
-            if (href.includes('#')) {
-                let hashIndex = href.indexOf('#');
-                let id = href.slice(hashIndex);
-                let target = document.querySelector(id);
-                if (target) {
-                    e.preventDefault();
-                    window.scrollTo({
-                        top: target.offsetTop - 140,
-                        behavior: 'smooth'
-                    });
-                }
-            }
-        });
-    });
-})
-
 
 
 //Jquery slider
