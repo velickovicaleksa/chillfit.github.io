@@ -112,7 +112,9 @@ let menuHeader_secondary = [
     {id_match:5,href:"author.html",content:"O AUTORU"},
     {id_match:5,href:"https://velickovicaleksa.github.io/myportfolio/",content:"PORTFOLIO"},
 ];
-var loader = document.querySelector('.loader');
+window.onload=function(){
+   
+    var loader = document.querySelector('.loader');
 // Hide the loader after a delay
 setTimeout(function() {
     if (loader) {
@@ -138,6 +140,7 @@ setTimeout(function() {
         }
       }
     }, 2000);
+}
     
  
 // Change this to the number of milliseconds you want the loader to show
@@ -284,34 +287,7 @@ function ImgWrite(sliderImg){ //Dinamicko ispisivanje slika
 }
 ImgWrite(sliderImg);
 $(document).ready(function(){
-    var slider = $('#slider');
-    slider.slick({
-        infinite: true,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        autoplay: true,
-        autoplaySpeed: 2000,
-        prevArrow: $('#prev'),
-        nextArrow: $('#next'),
-        pauseOnFocus: false,
-        pauseOnHover: false,
-        pauseOnDotsHover: false,
-    });
-    // Add indicators dynamically
-    var indicatorsContainer = $('#indicators-container');
-    for (var i = 0; i < slider.slick('getSlick').slideCount; i++) {
-        indicatorsContainer.append('<div class="slider-indicator" data-index="' + i + '"></div>');
-    }
-    // Update indicators on slide change
-    slider.on('afterChange', function(event, slick, currentSlide){
-        $('.slider-indicator').removeClass('active-indicator');
-        $('.slider-indicator[data-index="' + currentSlide + '"]').addClass('active-indicator');
-    });
-    // Handle indicator click to navigate to the corresponding slide
-    indicatorsContainer.on('click', '.slider-indicator', function(){
-        var index = $(this).data('index');
-        slider.slick('slickGoTo', index);
-    });
+    
 });
 
 
@@ -521,6 +497,34 @@ $(document).ready(function () {
             });
         });
     }
+    var slider = $('#slider');
+    slider.slick({
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 2000,
+        prevArrow: $('#prev'),
+        nextArrow: $('#next'),
+        pauseOnFocus: false,
+        pauseOnHover: false,
+        pauseOnDotsHover: false,
+    });
+    // Add indicators dynamically
+    var indicatorsContainer = $('#indicators-container');
+    for (var i = 0; i < slider.slick('getSlick').slideCount; i++) {
+        indicatorsContainer.append('<div class="slider-indicator" data-index="' + i + '"></div>');
+    }
+    // Update indicators on slide change
+    slider.on('afterChange', function(event, slick, currentSlide){
+        $('.slider-indicator').removeClass('active-indicator');
+        $('.slider-indicator[data-index="' + currentSlide + '"]').addClass('active-indicator');
+    });
+    // Handle indicator click to navigate to the corresponding slide
+    indicatorsContainer.on('click', '.slider-indicator', function(){
+        var index = $(this).data('index');
+        slider.slick('slickGoTo', index);
+    });
 
     if ($(".newArrivalsItem img").length) {
         $(".newArrivalsItem img").css('transition', 'transform 0.3s ease');
