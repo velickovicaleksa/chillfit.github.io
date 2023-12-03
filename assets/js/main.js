@@ -112,17 +112,14 @@ let menuHeader_secondary = [
     {id_match:5,href:"author.html",content:"O AUTORU"},
     {id_match:5,href:"https://velickovicaleksa.github.io/myportfolio/",content:"PORTFOLIO"},
 ];
-
     var loader = document.querySelector('.loader');
 // Hide the loader after a delay
 setTimeout(function() {
     if (loader) {
         loader.style.display = 'none';
       }
-    
       // Height of the navbar (adjust this value based on your actual navbar height)
       var navbarHeight = 146; // replace with your actual navbar height in pixels
-    
       // Scroll to the anchor position with a 50px offset
       var hash = window.location.hash;
       if (hash) {
@@ -130,7 +127,6 @@ setTimeout(function() {
         if (target) {
           // Calculate the adjusted scroll position by subtracting the navbar height
           var adjustedScrollPosition = target.getBoundingClientRect().top + window.scrollY - navbarHeight;
-    
           // Scroll to the target element with the adjusted position
           window.scrollTo({
             top: adjustedScrollPosition,
@@ -139,14 +135,10 @@ setTimeout(function() {
         }
       }
     }, 2000);
-
-    
- 
 // Change this to the number of milliseconds you want the loader to show
 let currentPage = window.location.pathname.split("/").pop().split(".")[0];
 console.log(currentPage);
 let activeMenu = null;
-
 for (let index in menuHeader) {
     if(currentPage==menuHeader[index].display) {
         menuHeader[index].isActive = true;
@@ -154,8 +146,8 @@ for (let index in menuHeader) {
         console.log(activeMenu);
     }
 }
-
-function HeaderMenu(menuHeader) {
+function HeaderMenu(menuHeader,containerID) {
+    let container =("#"+containerID);
     let ul = document.createElement("ul");
     for (index in menuHeader) {
         let li = document.createElement("li");
@@ -167,9 +159,12 @@ function HeaderMenu(menuHeader) {
         li.appendChild(a);
         ul.appendChild(li);
     }
-    document.querySelector("#header_menu").appendChild(ul);
+    document.querySelector(container).appendChild(ul);
 }
-HeaderMenu(menuHeader);
+HeaderMenu(menuHeader,'header_menu');
+
+
+
 
 const pagesWithCenteredLinks = ['kids', 'contact', 'author'];
 for(let index in pagesWithCenteredLinks) {
@@ -177,7 +172,6 @@ for(let index in pagesWithCenteredLinks) {
         document.querySelector("#header_hover").classList.add("centered-links");
     }
 }
-
 function SecondaryMenu(menuHeader_secondary){
     let ul = document.createElement("ul");
     for(let index in menuHeader) {
@@ -198,6 +192,9 @@ function SecondaryMenu(menuHeader_secondary){
     document.querySelector("#header_hover").appendChild(ul);
 }
 SecondaryMenu(menuHeader_secondary);
+
+
+
 
 let menu_header_links = document.getElementsByClassName("menu_header");
 for (let index in menu_header_links) {
@@ -252,6 +249,91 @@ for (let index in menu_header_links) {
 
 
 
+function createMenu(menuHeader, menuHeader_secondary, containerID) {
+    let container = $("#" + containerID);
+    let ul = $("<ul></ul>");
+
+    for (let index in menuHeader) {
+        let li = $("<li></li>", {
+            id: "item_" + menuHeader[index].id,
+            class: "menu_header" + (menuHeader[index].isActive ? ' active' : '')
+        });
+
+        let a = $("<a></a>", {
+            href: menuHeader[index].href,
+            text: menuHeader[index].content
+        });
+
+        let img = $("<img></img>", {
+            src: "assets/img/arrow.png", // replace with the path to your image
+            class: "arrow-icon"
+        });
+
+        li.append(a);
+        li.append(img);
+
+        //if (menuHeader[index].isActive) {
+            let menuHeader_secondary_filtered = menuHeader_secondary.filter((element) => element.id_match == menuHeader[index].id);
+            let ul_secondary = $("<ul></ul>");
+
+            for (let index in menuHeader_secondary_filtered) {
+                let li_secondary = $("<li></li>");
+                let a_secondary = $("<a></a>", {
+                    class: "smooth",
+                    href: menuHeader_secondary_filtered[index].href,
+                    text: menuHeader_secondary_filtered[index].content
+                });
+
+                li_secondary.append(a_secondary);
+                ul_secondary.append(li_secondary);
+            }
+
+            li.append(ul_secondary);
+        //}
+
+        ul.append(li);
+    }
+    container.append(ul);
+}
+
+$(document).ready(function () {
+    // Hide the responsive menu and secondary menus by default
+    $('#responsive_menu, .menu_header ul').hide();
+
+    // Toggle the responsive menu and switch between "more" and "less" images
+    $('#more, #less').click(function () {
+        $('#responsive_menu').slideToggle();
+        $('#more, #less').toggle(); // Toggle the visibility of "more" and "less" images
+    });
+
+    // Toggle the visibility of secondary menus on click
+    $(document).on('click', '.arrow-icon', function () {
+        $(this).siblings('ul').slideToggle();
+        $(this).toggleClass('rotate'); // Rotate the arrow icon
+    });
+});
+
+
+
+
+
+createMenu(menuHeader,menuHeader_secondary,"responsive_menu");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //Jquery slider
@@ -269,9 +351,7 @@ for (let index in menu_header_links) {
         imgsContainer.appendChild(imgDiv);
     }
 }
-
 ImgWrite(sliderImg);*/
-
 $(document).ready(function () {
     // Check if the element with class "typing" exists on the page
     if ($(".typing").length) {
@@ -372,9 +452,6 @@ setTimeout(function(){
 },60000);
 document.querySelector("#close").addEventListener("click",zatvoriIPrikazi);
 document.querySelector("#shop_now").addEventListener("click",zatvoriIPrikazi);
-
-
-
 function itemWrite(Content, containerID) {
     let divContent = "";
     for (let index = 0; index < Content.length; index++) {
@@ -406,15 +483,6 @@ function itemWrite(Content, containerID) {
         container.innerHTML = divContent;
     }
 }
-
-
-
-
-
-
-
-
-
 //Dinamicko ispisivanje proizvoda
 itemWrite(newArrivals, "newArrivals_1");
 itemWrite(NovemberFavourites, "newArrivals_2");
@@ -424,9 +492,7 @@ itemWrite(NovemberFavouritesW, "newArrivals_5");
 itemWrite(MustHavesW, "newArrivals_6");
 itemWrite(boysNew,"newArrivals_7");
 itemWrite(girlsNew,"newArrivals_8")
-
 /*let newArrivalsItems = document.querySelectorAll('.newArrivalsItem');
-
 newArrivalsItems.forEach(item => {
     let img = item.querySelector('img');
 
@@ -442,7 +508,6 @@ newArrivalsItems.forEach(item => {
         });
     }
 });*/
-
 function BannerWrite(Content, containerID) {  //Funkcija za ispisivanje banera
     let bannerOpen="";
     for (index in Content) {
@@ -461,15 +526,6 @@ function BannerWrite(Content, containerID) {  //Funkcija za ispisivanje banera
 BannerWrite(Banners,"banner_m");
 BannerWrite(BannersW,"banner_w");
 BannerWrite(BannersK,"banner_k");
-
-
-
-
-
-
-
-
-
 //Add to favourites
 let hearts = document.getElementsByClassName("heart");
 
@@ -483,8 +539,6 @@ for (let index = 0; index < hearts.length; index++) {
     });
  
 }
-
-
 /*NewsLetter validacija*/
 let checkMail = /^[a-zA-Z0-9\._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 let srediNewsLetter = document.getElementById("news-mail");
@@ -515,8 +569,6 @@ if(srediCheckNews){
         SrediNewsLetter()
     });
 }
-
-
 function SrediNewsLetter() {
     if(checkMail.test(srediNewsLetter.value)&& srediCheckNews.checked){
         document.getElementById("send_news").classList.remove("disabled");
@@ -536,10 +588,6 @@ function Proveri(){
         document.getElementById("danger_2").textContent = "Uspešno ste se prijavili na newsletter!";
     }
 }
-
-
-
-
 let nizSlika = ["assets/img/about.JPEG","assets/img/about_2.JPEG","assets/img/about_3.jpeg"];
 let nizTeksta = [{text:"Prijavi se na newsletter" ,href:"#newsletter"},{text:"Kontakt" ,href:"contact.html"}];
 function slider(sliderArr, containerID,interval) {
@@ -564,14 +612,8 @@ function slider(sliderArr, containerID,interval) {
     },interval)
 }
 }
-
 slider(nizSlika,"pic",3000);
 slider(nizTeksta,"banner_text",5000);
-
-
-
-
-
 footer_col_1 = [
     {title:"O NAMA"},
     {id:1,path:"https://velickovicaleksa.github.io/myportfolio/", text:"Portfolio"},
@@ -597,7 +639,6 @@ footer_col_4 = [
     {id:2,path:"https://www.instagram.com/visokaict/?hl=sr", text:"Instagram"},
     {id:3,path:"https://www.youtube.com/", text:"YouTube"}
 ];
-
 function FooterWrite(FooterColumnId, FooterColumn){
     let footer=`<h3>${FooterColumn[0].title}</h3>`;
     let ulOpen = `<ul>`;

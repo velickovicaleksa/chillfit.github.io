@@ -715,3 +715,191 @@ h2 {
 #payment p {
     padding-top: 1rem;
 }
+#header_responsive, #responsive_menu {
+    display: none;
+}
+
+@media screen and (max-width:480px) {
+   #wrap_head {
+    display: none;
+   }
+   #header_responsive {
+    margin: 0 auto;
+    width: 86%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+   }
+   #responsive_menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(to bottom, #777, #444);
+    z-index: 1001;
+   }
+   #responsive_menu li {
+    padding-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+   }
+   #responsive_menu ul li ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 1rem;
+   }
+   #responsive_menu a {
+    color: white;
+    font-size: 15px;
+   }
+   #responsive_menu img {
+    position: relative;
+    left: 75%;
+    top:-1.5rem;
+   }
+   #less {
+    z-index: 9999;
+    display: none;
+   }
+   .rotate {
+    transform: rotate(180deg);
+    }
+    #prev {
+        left: 1rem;
+    }
+    #next {
+        right: 1rem;
+    }
+    .custom-arrow {
+        top:35%;
+    }
+    .newArrivals {
+        flex-direction: column;
+        align-items: center;
+    }
+    .newArrivalsItem {
+        width: 90%;
+    }
+    .newArrivalsItem .heart {
+        position:relative;
+        width: 10%;
+        height: 10%;
+        top: -30rem;
+        left: 45%;
+    }
+    .banners {
+        flex-direction: column;
+        align-items: center;
+    }
+    .banner {
+        width: 100%;
+    }
+    .brands {
+        flex-direction: column;
+        align-items: center;
+    }
+    .brands img {
+        max-width: 100%;
+        max-height: 100%
+    }
+    .brands_we_love {
+        width: 100%;
+    }
+    #newsletter_content {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    #form_news {
+        margin: 1rem 0 0 0;
+        padding: 0;
+    }
+    #footer {
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        padding-bottom: 4rem;
+        padding-top: 0;
+    }
+    #last_banner {
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+    #last_banner ul {
+        width: 100%;
+        flex-direction: column;
+        justify-content: center;
+    }
+    #last_banner ul li {
+        margin-top: 2rem;
+        text-align: center;
+    }
+    #banner_open {
+        width: 90%;
+    }
+    #banner_open a{
+        top:83%;
+        left: 37%;
+        background-color: #777;
+    }
+    #close {
+        width: 16px;
+        height: 16px;
+    }
+    #about {
+        flex-direction: column;
+    }
+    #about_content {
+        flex-direction: column;
+        width: 100%;
+    }
+    #text_container {
+        width: 100%;
+    }
+    #kontakt {
+        width: 100%;
+        text-align: center;
+    }
+    #kontakt form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+    #kontakt input[type="text"],#kontakt input[type="password"],#kontakt input[type="email"] ,#kontakt textarea {
+        width: 80%;
+        margin: 1rem auto;
+    }
+    .toggle-password {
+        left: 9rem;
+        bottom: 2.9rem;
+    }
+    #countries, #cities {
+        width: 80%;
+    }
+    #agreements {
+        flex-direction: column;
+        width: 75%;
+    }
+    #posalji {
+        width: 20rem;
+        padding: 1.2rem;
+    }
+    #footer_wrap {
+        margin-top: 45rem;
+    }
+    
+}
