@@ -282,14 +282,21 @@ $(document).ready(function () {
             loop: true
         });
     }
-    if ($("#button_toggle").length && $(".hidden_text").length) {
-        $("#button_toggle").click(function () {
-            $(".hidden_text").slideToggle(function () {
-                var buttonText = $(".hidden_text").is(":visible") ? "Show Less" : "Show More";
-                $("#button_toggle").text(buttonText);
+    function toggleText(buttonSelector, textSelector) {
+        if ($(buttonSelector).length && $(textSelector).length) {
+            $(buttonSelector).click(function () {
+                $(textSelector).slideToggle(function () {
+                    var buttonText = $(textSelector).is(":visible") ? "Show Less" : "Show More";
+                    $(buttonSelector).text(buttonText);
+                });
             });
-        });
+        }
     }
+    toggleText("#button_toggle", ".hidden_text");
+    toggleText("#button_toggle_1", ".hidden_text_1");
+    toggleText("#button_toggle_2", ".hidden_text_2");
+    toggleText("#button_toggle_3", ".hidden_text_3");
+    toggleText("#button_toggle_4", ".hidden_text_4");
     var slider = $('#slider');
     slider.slick({
         infinite: true,
@@ -341,6 +348,31 @@ $(document).ready(function () {
         $("html").animate({ scrollTop: 0 }), $("html").css("scrollBehavior", "auto");
     });
 });
+//Prikazivanje banera preko tajmera
+function prikaziBaner() {
+    let baner =  document.querySelector("#banner_open");
+    if(baner) {
+        baner.style.display = "block";
+    }
+}
+function zatvoriBaner() {
+    let baner =  document.querySelector("#banner_open");
+    if(baner) {
+        baner.style.display = "none";
+    }
+}
+function zatvoriIPrikazi(){
+    zatvoriBaner();
+    setTimeout(function () {
+        prikaziBaner();
+    }, 60000);
+}
+setTimeout(function(){
+    prikaziBaner();
+},60000);
+document.querySelector("#close").addEventListener("click",zatvoriIPrikazi);
+document.querySelector("#shop_now").addEventListener("click",zatvoriIPrikazi);
+
 
 
 function itemWrite(Content, containerID) {
@@ -374,6 +406,11 @@ function itemWrite(Content, containerID) {
         container.innerHTML = divContent;
     }
 }
+
+
+
+
+
 
 
 
@@ -537,25 +574,25 @@ slider(nizTeksta,"banner_text",5000);
 
 footer_col_1 = [
     {title:"O NAMA"},
-    {id:1,path:"#", text:"O Chill Fit-u"},
-    {id:2,path:"#", text:"Podaci kompanije"},
-    {id:3,path:"#", text:"Kontakt"},
+    {id:1,path:"https://velickovicaleksa.github.io/myportfolio/", text:"Portfolio"},
+    {id:2,path:"dokumentacija.pdf", text:"Dokumentacija"},
+    {id:3,path:"contact.html", text:"Kontakt"},
     {id:4,path:"author.html", text:"Autor"}
 ];
 footer_col_2 = [
-    {title:"KORISNIČKI SERVIS"},
-    {id:1,path:"#", text:"Uslovi korišćenja"},
-    {id:2,path:"#", text:"Politika privatnosti"},
-    {id:3,path:"#", text:"Pravo na odustajanje"}
+    {title:"NAVIGACIJA"},
+    {id:1,path:"men.html", text:"Muškarci"},
+    {id:2,path:"women.html", text:"Žene"},
+    {id:3,path:"kids.html", text:"Deca"}
 ];
 footer_col_3 = [
-    {title:"PRONAĐITE NAS"},
-    {id:1,path:"#", text:"Načini plaćanja"},
-    {id:2,path:"#", text:"Dostava"},
-    {id:3,path:"#", text:"Reklamacije"}
+    {title:"KORISNIČKI SERVIS"},
+    {id:1,path:"payment.html", text:"Načini plaćanja"},
+    {id:2,path:"delivery.html", text:"Dostava"},
+    {id:3,path:"refund.html", text:"Reklamacije"}
 ];
 footer_col_4 = [
-    {title:"KORISNIČKI SERVIS"},
+    {title:"PRONAĐITE NAS"},
     {id:1,path:"https://www.facebook.com/visokaictskola", text: "Facebook"},
     {id:2,path:"https://www.instagram.com/visokaict/?hl=sr", text:"Instagram"},
     {id:3,path:"https://www.youtube.com/", text:"YouTube"}
@@ -574,15 +611,34 @@ function FooterWrite(FooterColumnId, FooterColumn){
         isFooter.innerHTML=footer;
     }
 }
-
-
-
-
-
-
- 
 FooterWrite('footer_column_1',footer_col_1);
 FooterWrite('footer_column_2',footer_col_2);
 FooterWrite('footer_column_3',footer_col_3);
 FooterWrite('footer_column_4',footer_col_4);
 //}
+let Footer_last = [
+    {iconClass: 'fas fa-mobile-alt',link: 'tel:+381621626189',},
+    {text: 'Ponedeljak - Petak 08:00 - 18:00h',},
+    {text: '&copy;ICT', },
+    {iconClass: 'fab fa-instagram',link: 'https://www.instagram.com/',},
+    {iconClass: 'fab fa-facebook',link: 'https://www.facebook.com/',},
+    {iconClass: 'fab fa-youtube',link: 'https://www.youtube.com/',},
+    {iconClass: 'fas fa-sitemap',link: 'assets/sitemap.xml',},
+    {iconClass: 'far fa-file',link: 'assets/dokumentacija.pdf'}
+  ];
+function bannerLast(){
+    let zadnjiBaner = document.querySelector("#last_banner_wrap");
+    let zadnjiOtvori = `<div id="last_banner"><ul>`;
+    for(let index of Footer_last) {
+        if(index.iconClass) {
+            zadnjiOtvori+=`<li><a href="${index.link}"><i class="${index.iconClass}"></i></a></li>`;
+        }
+        else if(index.text) {
+            zadnjiOtvori+=`<li><p>${index.text}</p></li>`;
+        }
+    }
+    zadnjiOtvori+=`</ul></div>`;
+    if(zadnjiBaner){zadnjiBaner.innerHTML= zadnjiOtvori;}
+    
+}
+bannerLast();

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Nacini placanja</title>
+        <link rel="icon" type="image/x-icon" href="assets/img/Icons/favico.png" />
+        <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
+        <script src="https://kit.fontawesome.com/271c4bfbcf.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+        <script src="https://kit.fontawesome.com/271c4bfbcf.js" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+        <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    </head>
+    <body>
+        <div class="loader"> 
+            <img src="assets/img/logo_load.png" class="spinning-image" alt="loading image" />
+        </div>
+        <div id="scroll-up-btn">
+            <i class="fas fa-angle-up"></i>
+        </div>
+        <div id = "banner_contain">
+            <div id="banner_content">
+                <a id="banner_text" href="#newsletter">Prijavi se na newsletter</a>
+                <a href="author.html">Autor</a>
+            </div>
+        </div>
+        <div id="wrap_head">
+            <div id= "header">
+                <div id = "header_menu">
+                    <!--Dinamicki ispisan meni-->
+                </div>
+                <img src="assets/img/logo.png" alt="Site Logo"  width="15%" height="15%"/>
+                <input type="search" placeholder="Pretrazite ceo ChillFit" />
+            </div>
+            <div id="header_hover" class="oboji">
+                <!--Dinamicki ispisan sekundarni meni-->
+            </div> 
+        </div>
+        <div id="banner_open">
+            <img id="banner_bg" src="assets/img/banner_open.jpg" />
+            <a href="index.html" id="shop_now">Shop now!</a>
+            <img id="close" src="assets/img/close.png"  height="40px" width="40px"/>
+        </div>
+        
+        <div id="payment">
+            <h2>Načini plaćanja</h2>
+            <h3>Pouzećem</h3>
+            <p>Prilikom isporuke, robu je moguće platiti kuriru isključivo gotovinom.</p>
+            <h3>Platna kartica</h3>
+            <p>Kartice koje su prihvaćene u našoj online prodavnici su <b>Visa, Master, Maestro i Dina.</b></p>
+            <span class="hidden_text_1">
+                Prilikom unošenja podataka o platnoj kartici, poverljive informacije se prenose putem javne mreže u zaštićenoj (kriptovanoj) formi upotrebnom SSL protokola i PKI sistema, kao trenutno najsavremenije kriptografske tehnologije. Sigurnost podataka prilikom kupovine garantuje procesor platnih kartica ChipCard a.d Beograd, pa se tako kompletan proces naplate obavlja na stranicama ChipCard-a. Niti jednog trenutka podaci o platnoj kartici nisu dostupni našem sistemu.
+                Plaćanje je moguće platnim karticama domaćih i inostranih banaka.<br />
+                <b>Plaćanje na 12 mesečni rata, trenutno je moguće isključivo karticama Banca Intesa. Prilikom unosa potrebnih podataka sa kartice, na stranici ChipCard-a, potrebno je izabrati željeni broj rata.</b>
+            </span>
+            <button class="toggle-button" id="button_toggle_1">Show more</button>
+            <h3>Čekovi građana</h3>
+            <p>U Remiks maloprodajnom objektu u Rajićeva Shoppping Centru, moguće je plaćanje čekovima građana na 6 mesečnih rata. Ovaj način plaćanja nije dostupan kod poručivanja putem sajta ili call centra.</p>
+            <span class="hidden_text_2">
+                U slučaju vraćanja robe i povraćaja sredstava kupcu koji je prethodno platio nekom od platnih kartica, delimično ili u celosti, a bez obzira na razlog vraćanja, Platforma d.o.o. je u obavezi da povraćaj vrši isključivo preko VISA, EC/MC i Maestro metoda plaćanja.
+                <br /><b>Izjava o konverziji:</b>Sva plaćanja biće izvršena u lokalnoj valuti Republike Srbije – dinar (RSD). Iznos za koji će biti zadužena vaša platna kartica biće izražen u vašoj lokalnoj valuti kroz konverziju u istu, po kursu koji koriste kartičarske organizacije, a koji nama u trenutku transakcije ne može biti poznat. Kao rezultat ove konverzije postoji mogućnost neznatne razlike od originalne cene, navedene na našem sajtu. Hvala Vam na razumevanju.
+            </span>
+            <button class="toggle-button" id="button_toggle_2">Show more</button>
+        </div>
+        <div id="newsletter">
+            <div id="newsletter_content">
+                <h2>PRIJAVI SE NA NAŠ NEWSLETTER</h2>
+                <form method="get" id="form_news" name="form_news_name" onSubmit="return Proveri()">
+                    <input type="text" id="news-mail" name="news-mail_name" placeholder="Upiši svoj email" />
+                    <input type="submit" id="send_news" name="send_news_name" value="Prijava" class="disabled" disabled="disabled"/><br />
+                    <span class="danger" id="danger_1"></span>
+                    <input type="checkbox" id="news_agree" name="news_agree_name" /><span id="agree">Slažem se sa Politikom privatnosti</span>
+                    <span class="danger" id="danger_2"></span>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="footer">
+        <div id="footer_column_1" class="footer_column"></div>
+        <div id="footer_column_2" class="footer_column"></div>
+        <div id="footer_column_3" class="footer_column"></div>
+        <div id="footer_column_4" class="footer_column"></div>
+    </div>
+    <div id="last_banner_wrap">
+        <!--Dinamicki ispisane ikonice futera-->
+    </div>
+
+        
+        <script src="assets/js/main.js" type="text/javascript" language="javascript"></script>
+    </body>
+
+</html>
