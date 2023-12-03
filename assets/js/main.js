@@ -623,7 +623,7 @@ footer_col_1 = [
 ];
 footer_col_2 = [
     {title:"NAVIGACIJA"},
-    {id:1,path:"men.html", text:"Muškarci"},
+    {id:1,path:"index.html", text:"Muškarci"},
     {id:2,path:"women.html", text:"Žene"},
     {id:3,path:"kids.html", text:"Deca"}
 ];
