@@ -1,9 +1,16 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <!--Meta tags-->
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Welcome to ChillFit casual shop and Fashion !" />
+        <meta name="author" content="Aleksa Velickovic" />
+        <meta name="keywords" content="Muskarci, Zene, Deca, Odeca, Obuca, ChillFit" />
+        <meta name="zipcode" content="110000" />
+        <meta name="robots" content="index,nofollow" />
         <title>Deca</title>
+        <!--External sources-->
         <link rel="icon" type="image/x-icon" href="assets/img/Icons/favico.png" />
         <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
         <script src="https://kit.fontawesome.com/271c4bfbcf.js" crossorigin="anonymous"></script>
@@ -30,8 +37,7 @@
                 <div id = "header_menu">
                     <!--Dinamicki ispisan meni-->
                 </div>
-                <img src="assets/img/logo.png" alt="Site Logo"  width="15%" height="15%" />
-                <input type="search" placeholder="Pretrazite ceo ChillFit" />
+                <a href="index.html"><img src="assets/img/logo.png" alt="Site Logo"  width="15%" height="15%"/></a>
             </div>
             <div id="header_hover">
                 <!--Dinamicki ispisan sekundarni meni-->
@@ -54,7 +60,9 @@
             </div>
             <div id="prev" class="custom-arrow"><img src="assets/img/arrow_left.png" alt="Previous arrow"></div>
             <div id="next" class="custom-arrow"><img src="assets/img/arrow_right.png" alt="Next arrow"></div>
-            <div id="indicators-container"></div> 
+            <div id="indicators-container">
+                <!--Dinamicki ispisani indikatori slajdera-->
+            </div> 
         </div>
         <div id="banner_open">
             <img id="banner_bg" src="assets/img/banner_open.jpg" />
@@ -75,7 +83,7 @@
         <div id="newsletter">
             <div id="newsletter_content">
                 <h2>PRIJAVI SE NA NAŠ NEWSLETTER</h2>
-                <form method="get" id="form_news" name="form_news_name" onSubmit="return Proveri()">
+                <form method="get" id="form_news" name="form_news_name" onSubmit="Proveri()">
                     <input type="text" id="news-mail" name="news-mail_name" placeholder="Upiši svoj email" />
                     <input type="submit" id="send_news" name="send_news_name" value="Prijava" class="disabled" disabled="disabled" /><br />
                     <span class="danger" id="danger_1"></span>

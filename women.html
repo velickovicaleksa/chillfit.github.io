@@ -1,9 +1,16 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <!--Meta tags-->
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Welcome to ChillFit casual shop and Fashion !" />
+        <meta name="author" content="Aleksa Velickovic" />
+        <meta name="keywords" content="Muskarci, Zene, Deca, Odeca, Obuca, ChillFit" />
+        <meta name="zipcode" content="110000" />
+        <meta name="robots" content="index,nofollow" />
         <title>Zene</title>
+        <!--External sources-->
         <link rel="icon" type="image/x-icon" href="assets/img/Icons/favico.png" />
         <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
         <script src="https://kit.fontawesome.com/271c4bfbcf.js" crossorigin="anonymous"></script>
@@ -30,8 +37,7 @@
                 <div id = "header_menu">
                     <!--Dinamicki ispisan meni-->
                 </div>
-                <img src="assets/img/logo.png" alt="Site Logo"  width="15%" height="15%" />
-                <input type="search" placeholder="Pretrazite ceo ChillFit" />
+                <a href="index.html"><img src="assets/img/logo.png" alt="Site Logo"  width="15%" height="15%"/></a>
             </div>
             <div id="header_hover">
                 <!--Dinamicki ispisan sekundarni meni-->
@@ -43,6 +49,7 @@
             <img id="less" src="assets/img/hamburger_close.png" height="40px" width="40px" />
         </div>
         <div id="responsive_menu">
+            <!--Dinamicki ispisan primarni i sekundarni meni za mobilne uredjaje-->
         </div>
         <div id="slider-container">
             <div id="slider">
@@ -54,7 +61,9 @@
             </div>
             <div id="prev" class="custom-arrow"><img src="assets/img/arrow_left.png" alt="Previous arrow"></div>
             <div id="next" class="custom-arrow"><img src="assets/img/arrow_right.png" alt="Next arrow"></div>
-            <div id="indicators-container"></div> 
+            <div id="indicators-container">
+                <!--Dinamicki ispisani indikatori slajdera-->
+            </div> 
         </div>
         <div id="banner_open">
             <img id="banner_bg" src="assets/img/banner_open.jpg" />
@@ -73,17 +82,8 @@
             <!--Dinamicki ispisani proizvodi sa racunatom cenom i popustima-->
          </div>
         <h1 class="h1"  id="brands_2">BRENDOVI U FOKUSU</h1>
-        <div class="brands" id="brands_1">
-            <div class="brands_we_love">
-                <a href="women.html">
-                <img src="assets/img/brands_we_love_3.jpg" alt="Brands we Love!" />
-            </a>
-            </div>
-            <div class="brands_we_love">
-                <a href="women.html">
-                    <img src="assets/img/brands_we_love_4.jpg" alt="Brands we Love!" />
-                </a>
-            </div>
+        <div class="brands" id="brands_w">
+            <!--Dinamicki ispisani baneri za brendove-->
         </div>
         <h1 class="h1" id="h1_3">ChillFit MUST HAVES</h1>
         <div class="newArrivals" id="newArrivals_6">
@@ -92,7 +92,7 @@
         <div id="newsletter">
             <div id="newsletter_content">
                 <h2>PRIJAVI SE NA NAŠ NEWSLETTER</h2>
-                <form method="get" id="form_news" name="form_news_name" onSubmit="return Proveri()">
+                <form method="get" id="form_news" name="form_news_name" onSubmit="Proveri()">
                     <input type="text" id="news-mail" name="news-mail_name" placeholder="Upiši svoj email" />
                     <input type="submit" id="send_news" name="send_news_name" value="Prijava" class="disabled" disabled="disabled" /><br />
                     <span class="danger" id="danger_1"></span>

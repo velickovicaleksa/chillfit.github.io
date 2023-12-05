@@ -1,6 +1,4 @@
-//window.onload=function(){
-//Objekti proizvoda
-
+//Objekti
 let sliderImg = [
     {id:1,src:"assets/img/cover_",alt:"Cover"},
     {id:2,src:"assets/img/cover_",alt:"Cover"},
@@ -112,30 +110,76 @@ let menuHeader_secondary = [
     {id_match:5,href:"author.html",content:"O AUTORU"},
     {id_match:5,href:"https://velickovicaleksa.github.io/myportfolio/",content:"PORTFOLIO"},
 ];
-    var loader = document.querySelector('.loader');
-// Hide the loader after a delay
+let brands_m =[
+    {id:1,path:"men.html",img:"assets/img/brands_we_love_1.jpg"},
+    {id:2,path:"men.html",img:"assets/img/brands_we_love_2.jpg"}
+];
+let brands_w =[
+    {id:1,path:"women.html",img:"assets/img/brands_we_love_3.jpg"},
+    {id:2,path:"women.html",img:"assets/img/brands_we_love_4.jpg"}
+];
+footer_col_1 = [
+    {title:"O NAMA"},
+    {id:1,path:"https://velickovicaleksa.github.io/myportfolio/", text:"Portfolio"},
+    {id:2,path:"dokumentacija.pdf", text:"Dokumentacija"},
+    {id:3,path:"contact.html", text:"Kontakt"},
+    {id:4,path:"author.html", text:"Autor"}
+];
+footer_col_2 = [
+    {title:"NAVIGACIJA"},
+    {id:1,path:"index.html", text:"Muškarci"},
+    {id:2,path:"women.html", text:"Žene"},
+    {id:3,path:"kids.html", text:"Deca"}
+];
+footer_col_3 = [
+    {title:"KORISNIČKI SERVIS"},
+    {id:1,path:"payment.html", text:"Načini plaćanja"},
+    {id:2,path:"delivery.html", text:"Dostava"},
+    {id:3,path:"refund.html", text:"Reklamacije"}
+];
+footer_col_4 = [
+    {title:"PRONAĐITE NAS"},
+    {id:1,path:"https://www.facebook.com/visokaictskola", text: "Facebook"},
+    {id:2,path:"https://www.instagram.com/visokaict/?hl=sr", text:"Instagram"},
+    {id:3,path:"https://www.youtube.com/", text:"YouTube"}
+];
+let Footer_last = [
+    {iconClass: 'fas fa-mobile-alt',link: 'tel:+381621626189',},
+    {text: 'Ponedeljak - Petak 08:00 - 18:00h',},
+    {text: '&copy;ICT', },
+    {iconClass: 'fab fa-instagram',link: 'https://www.instagram.com/',},
+    {iconClass: 'fab fa-facebook',link: 'https://www.facebook.com/',},
+    {iconClass: 'fab fa-youtube',link: 'https://www.youtube.com/',},
+    {iconClass: 'fas fa-sitemap',link: 'sitemap.xml',},
+    {iconClass: 'far fa-file',link: 'assets/dokumentacija.pdf'}
+  ];
+
+//Loader
+
+var loader = document.querySelector('.loader');
 setTimeout(function() {
     if (loader) {
         loader.style.display = 'none';
-      }
-      // Height of the navbar (adjust this value based on your actual navbar height)
-      var navbarHeight = 146; // replace with your actual navbar height in pixels
-      // Scroll to the anchor position with a 50px offset
-      var hash = window.location.hash;
-      if (hash) {
+    }
+    var navbarHeight = 146; //Visina #header_wrap (nav_bar-a)
+    var hash = window.location.hash; //Fragment identifikator URL-a (ex: #section_1)
+    if (hash) {
         var target = document.querySelector(hash);
         if (target) {
-          // Calculate the adjusted scroll position by subtracting the navbar height
-          var adjustedScrollPosition = target.getBoundingClientRect().top + window.scrollY - navbarHeight;
-          // Scroll to the target element with the adjusted position
-          window.scrollTo({
-            top: adjustedScrollPosition,
-            behavior: 'smooth', // or 'auto' for instant scroll
-          });
+            //Od vrha elementa do vrha vidljivog dela ekrana (view-port-a)
+            var adjustedScrollPosition = target.getBoundingClientRect().top + window.scrollY - navbarHeight;
+            // Scroll do elementa sa izmenjenom pozicijom radi oduzimanja visine navigacije
+            window.scrollTo({
+                top: adjustedScrollPosition,
+                behavior: 'smooth'
+            });
         }
-      }
-    }, 2000);
-// Change this to the number of milliseconds you want the loader to show
+    }
+}, 2000);
+
+
+
+//Dinamicko odredjivanje aktivnog linka
 let currentPage = window.location.pathname.split("/").pop().split(".")[0];
 console.log(currentPage);
 let activeMenu = null;
@@ -146,6 +190,8 @@ for (let index in menuHeader) {
         console.log(activeMenu);
     }
 }
+//Primarni meni
+
 function HeaderMenu(menuHeader,containerID) {
     let container =("#"+containerID);
     let ul = document.createElement("ul");
@@ -164,14 +210,16 @@ function HeaderMenu(menuHeader,containerID) {
 HeaderMenu(menuHeader,'header_menu');
 
 
-
-
+//Dodavanje klase za centriranje linkova za sekundarne menije stranica po default-u
 const pagesWithCenteredLinks = ['kids', 'contact', 'author'];
 for(let index in pagesWithCenteredLinks) {
     if(currentPage==pagesWithCenteredLinks[index]) {
         document.querySelector("#header_hover").classList.add("centered-links");
     }
 }
+
+//Sekundarni meni
+
 function SecondaryMenu(menuHeader_secondary){
     let ul = document.createElement("ul");
     for(let index in menuHeader) {
@@ -193,8 +241,9 @@ function SecondaryMenu(menuHeader_secondary){
 }
 SecondaryMenu(menuHeader_secondary);
 
-
-
+//Dinamicko ispisivanje sekundarnog menija u zavisnosti od hover-a(mouseover+mouseout)
+//Dinamicko odredjivanje aktivnog linka menija
+//Dinamicko dodavanje klasa za centriranje linkova
 
 let menu_header_links = document.getElementsByClassName("menu_header");
 for (let index in menu_header_links) {
@@ -248,6 +297,7 @@ for (let index in menu_header_links) {
 }
 
 
+//Dinamicko ispisivanje menija i sekundarnog menija za mobilne uredjaje
 
 function createMenu(menuHeader, menuHeader_secondary, containerID) {
     let container = $("#" + containerID);
@@ -265,95 +315,73 @@ function createMenu(menuHeader, menuHeader_secondary, containerID) {
         });
 
         let img = $("<img></img>", {
-            src: "assets/img/arrow.png", // replace with the path to your image
+            src: "assets/img/arrow.png",
             class: "arrow-icon"
         });
 
         li.append(a);
         li.append(img);
 
-        //if (menuHeader[index].isActive) {
-            let menuHeader_secondary_filtered = menuHeader_secondary.filter((element) => element.id_match == menuHeader[index].id);
-            let ul_secondary = $("<ul></ul>");
+        let menuHeader_secondary_filtered = menuHeader_secondary.filter((element) => element.id_match == menuHeader[index].id);
+        let ul_secondary = $("<ul></ul>");
 
-            for (let index in menuHeader_secondary_filtered) {
-                let li_secondary = $("<li></li>");
-                let a_secondary = $("<a></a>", {
-                    class: "smooth",
-                    href: menuHeader_secondary_filtered[index].href,
-                    text: menuHeader_secondary_filtered[index].content
-                });
+        for (let index in menuHeader_secondary_filtered) {
+            let li_secondary = $("<li></li>");
+            let a_secondary = $("<a></a>", {
+                class: "smooth",
+                href: menuHeader_secondary_filtered[index].href,
+                text: menuHeader_secondary_filtered[index].content
+            });
 
-                li_secondary.append(a_secondary);
-                ul_secondary.append(li_secondary);
-            }
+            li_secondary.append(a_secondary);
+            ul_secondary.append(li_secondary);
+        }
 
-            li.append(ul_secondary);
-        //}
-
+        li.append(ul_secondary);
         ul.append(li);
     }
     container.append(ul);
 }
 
+
+
 $(document).ready(function () {
-    // Hide the responsive menu and secondary menus by default
+    // Sakrivanje menija i sekundarnih menija po default-u
     $('#responsive_menu, .menu_header ul').hide();
 
-    // Toggle the responsive menu and switch between "more" and "less" images
+    // Toggle funckija za sakrivanje i prikazivanje primarnog menija kao i sliku hamburgera
     $('#more, #less').click(function () {
         $('#responsive_menu').slideToggle();
-        $('#more, #less').toggle(); // Toggle the visibility of "more" and "less" images
+        $('#more, #less').toggle();
     });
 
-    // Toggle the visibility of secondary menus on click
+    // Toggle funckija za prikazivanje sekundarnih menija klikom na ikonicu strelica koja se rotira
     $(document).on('click', '.arrow-icon', function () {
         $(this).siblings('ul').slideToggle();
-        $(this).toggleClass('rotate'); // Rotate the arrow icon
+        $(this).toggleClass('rotate');
     });
 });
 
-
-
-
-
 createMenu(menuHeader,menuHeader_secondary,"responsive_menu");
 
+//Dinamicko ispisivanje sadrzaja bannera za brendove
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//Jquery slider
-/*function ImgWrite(sliderImg) {
-    let imgsContainer = document.getElementById("slider");
-
-    for (index in sliderImg) {
-        let imgDiv = document.createElement("div");
-        let imgElement = document.createElement("img");
-
-        imgElement.src = `${sliderImg[index].src}${Number(index) + 1}.jpg`;
-        imgElement.alt = `${sliderImg[index].alt}${index + 1}`;
-
-        imgDiv.appendChild(imgElement);
-        imgsContainer.appendChild(imgDiv);
+function createBrands(brands_array,containerId) {
+    brands_open=``;
+    for(let i=0;i<brands_array.length;i++) {
+        brands_open+=`<div class="brands_we_love"><a href="${brands_array[i].path}"><img src="${brands_array[i].img}" alt="Brands we Love!" /></a></div>`;
     }
+    if(document.querySelector(`#${containerId}`)){
+        document.querySelector(`#${containerId}`).innerHTML = brands_open;
+    }
+    
 }
-ImgWrite(sliderImg);*/
+createBrands(brands_m,'brands_m');
+createBrands(brands_w,'brands_w');
+            
+//Jquery
 $(document).ready(function () {
-    // Check if the element with class "typing" exists on the page
+    // Ispisivanje kucaceg teksta koriscenjem jquery typed.js plug-in-a
     if ($(".typing").length) {
         var typed = new Typed(".typing", {
             strings: ["Student.", "Developer.", "Basketball player.", "Designer.", "Freelancer"],
@@ -362,6 +390,7 @@ $(document).ready(function () {
             loop: true
         });
     }
+    // Prikazivanje i sakrivanje teksta, kao i menjanje teskta na dugmetu
     function toggleText(buttonSelector, textSelector) {
         if ($(buttonSelector).length && $(textSelector).length) {
             $(buttonSelector).click(function () {
@@ -377,6 +406,8 @@ $(document).ready(function () {
     toggleText("#button_toggle_2", ".hidden_text_2");
     toggleText("#button_toggle_3", ".hidden_text_3");
     toggleText("#button_toggle_4", ".hidden_text_4");
+    
+    // Slajder slika koriscenjem jquery plug-in-a slick.js
     var slider = $('#slider');
     slider.slick({
         infinite: true,
@@ -390,17 +421,17 @@ $(document).ready(function () {
         pauseOnHover: false,
         pauseOnDotsHover: false,
     });
-    // Add indicators dynamically
+    // Dinamicko ispisivanje indikatora slajdera
     var indicatorsContainer = $('#indicators-container');
     for (var i = 0; i < slider.slick('getSlick').slideCount; i++) {
         indicatorsContainer.append('<div class="slider-indicator" data-index="' + i + '"></div>');
     }
-    // Update indicators on slide change
+    // Azuriranje indikatora na promenu slike
     slider.on('afterChange', function(event, slick, currentSlide){
         $('.slider-indicator').removeClass('active-indicator');
         $('.slider-indicator[data-index="' + currentSlide + '"]').addClass('active-indicator');
     });
-    // Handle indicator click to navigate to the corresponding slide
+    // Poromena slike klikom na indikator
     indicatorsContainer.on('click', '.slider-indicator', function(){
         var index = $(this).data('index');
         slider.slick('slickGoTo', index);
@@ -417,17 +448,19 @@ $(document).ready(function () {
             $(this).find('img').css('transform', 'scale(1)');
         });
     }
-    $(window).on('load', function () {
-        $('#loading-screen').fadeOut('slow');
-    });
+
+    //Dodavanje stiki pozicije navigacije i prikazivanje button-a za na gore nakon predjenog dela stranice dinamicki
     $(window).scroll(function () {
         this.scrollY > 20 ? $("#wrap_head").addClass("sticky") : $("#wrap_head").removeClass("sticky"),
         this.scrollY > 500 ? $("#scroll-up-btn").addClass("show") : $("#scroll-up-btn").removeClass("show");
     });
+    //Funckionalnost skrol up-button-a
     $("#scroll-up-btn").click(function () {
         $("html").animate({ scrollTop: 0 }), $("html").css("scrollBehavior", "auto");
     });
 });
+
+
 //Prikazivanje banera preko tajmera
 function prikaziBaner() {
     let baner =  document.querySelector("#banner_open");
@@ -452,6 +485,10 @@ setTimeout(function(){
 },60000);
 document.querySelector("#close").addEventListener("click",zatvoriIPrikazi);
 document.querySelector("#shop_now").addEventListener("click",zatvoriIPrikazi);
+
+
+//Dinamicko ispisivanje proizvoda
+
 function itemWrite(Content, containerID) {
     let divContent = "";
     for (let index = 0; index < Content.length; index++) {
@@ -492,22 +529,7 @@ itemWrite(NovemberFavouritesW, "newArrivals_5");
 itemWrite(MustHavesW, "newArrivals_6");
 itemWrite(boysNew,"newArrivals_7");
 itemWrite(girlsNew,"newArrivals_8")
-/*let newArrivalsItems = document.querySelectorAll('.newArrivalsItem');
-newArrivalsItems.forEach(item => {
-    let img = item.querySelector('img');
 
-    if (img) {
-        img.style.transition = 'transform 0.3s ease';
-
-        item.addEventListener('mouseover', function () {
-            img.style.transform = 'scale(1.15)';
-        });
-
-        item.addEventListener('mouseout', function () {
-            img.style.transform = 'scale(1)';
-        });
-    }
-});*/
 function BannerWrite(Content, containerID) {  //Funkcija za ispisivanje banera
     let bannerOpen="";
     for (index in Content) {
@@ -526,7 +548,8 @@ function BannerWrite(Content, containerID) {  //Funkcija za ispisivanje banera
 BannerWrite(Banners,"banner_m");
 BannerWrite(BannersW,"banner_w");
 BannerWrite(BannersK,"banner_k");
-//Add to favourites
+
+//Dodaj u omiljene
 let hearts = document.getElementsByClassName("heart");
 
 for (let index = 0; index < hearts.length; index++) {
@@ -539,6 +562,7 @@ for (let index = 0; index < hearts.length; index++) {
     });
  
 }
+
 /*NewsLetter validacija*/
 let checkMail = /^[a-zA-Z0-9\._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 let srediNewsLetter = document.getElementById("news-mail");
@@ -588,6 +612,8 @@ function Proveri(){
         document.getElementById("danger_2").textContent = "Uspešno ste se prijavili na newsletter!";
     }
 }
+
+//Dinamicko ispisivanje linkova i menjanje njihovih putanja, slajder slika
 let nizSlika = ["assets/img/about.JPEG","assets/img/about_2.JPEG","assets/img/about_3.jpeg"];
 let nizTeksta = [{text:"Prijavi se na newsletter" ,href:"#newsletter"},{text:"Kontakt" ,href:"contact.html"}];
 function slider(sliderArr, containerID,interval) {
@@ -614,31 +640,8 @@ function slider(sliderArr, containerID,interval) {
 }
 slider(nizSlika,"pic",3000);
 slider(nizTeksta,"banner_text",5000);
-footer_col_1 = [
-    {title:"O NAMA"},
-    {id:1,path:"https://velickovicaleksa.github.io/myportfolio/", text:"Portfolio"},
-    {id:2,path:"dokumentacija.pdf", text:"Dokumentacija"},
-    {id:3,path:"contact.html", text:"Kontakt"},
-    {id:4,path:"author.html", text:"Autor"}
-];
-footer_col_2 = [
-    {title:"NAVIGACIJA"},
-    {id:1,path:"index.html", text:"Muškarci"},
-    {id:2,path:"women.html", text:"Žene"},
-    {id:3,path:"kids.html", text:"Deca"}
-];
-footer_col_3 = [
-    {title:"KORISNIČKI SERVIS"},
-    {id:1,path:"payment.html", text:"Načini plaćanja"},
-    {id:2,path:"delivery.html", text:"Dostava"},
-    {id:3,path:"refund.html", text:"Reklamacije"}
-];
-footer_col_4 = [
-    {title:"PRONAĐITE NAS"},
-    {id:1,path:"https://www.facebook.com/visokaictskola", text: "Facebook"},
-    {id:2,path:"https://www.instagram.com/visokaict/?hl=sr", text:"Instagram"},
-    {id:3,path:"https://www.youtube.com/", text:"YouTube"}
-];
+
+//Dinamicko ispisivanje futera i kolona futera
 function FooterWrite(FooterColumnId, FooterColumn){
     let footer=`<h3>${FooterColumn[0].title}</h3>`;
     let ulOpen = `<ul>`;
@@ -657,16 +660,8 @@ FooterWrite('footer_column_2',footer_col_2);
 FooterWrite('footer_column_3',footer_col_3);
 FooterWrite('footer_column_4',footer_col_4);
 //}
-let Footer_last = [
-    {iconClass: 'fas fa-mobile-alt',link: 'tel:+381621626189',},
-    {text: 'Ponedeljak - Petak 08:00 - 18:00h',},
-    {text: '&copy;ICT', },
-    {iconClass: 'fab fa-instagram',link: 'https://www.instagram.com/',},
-    {iconClass: 'fab fa-facebook',link: 'https://www.facebook.com/',},
-    {iconClass: 'fab fa-youtube',link: 'https://www.youtube.com/',},
-    {iconClass: 'fas fa-sitemap',link: 'assets/sitemap.xml',},
-    {iconClass: 'far fa-file',link: 'assets/dokumentacija.pdf'}
-  ];
+
+//Dinamicko ispisivanje banera futera
 function bannerLast(){
     let zadnjiBaner = document.querySelector("#last_banner_wrap");
     let zadnjiOtvori = `<div id="last_banner"><ul>`;

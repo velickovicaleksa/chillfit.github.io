@@ -158,7 +158,7 @@
     padding-bottom: 1.5rem;
 }
 #header > a {
-    margin-left: 20%;
+    margin-left: 19%;
 }
 #header_menu ul {
     display: flex;
@@ -194,8 +194,8 @@ input[type="search"] {
 .oboji {
     width: 100%;
     height: 50px;
-    display: flex;
     background-color: black;
+
 }
 #header_hover ul {
     width: 66%;
@@ -364,6 +364,10 @@ input[type="search"] {
 }
 .brands_we_love {
     width: 45%;
+}
+.brands_we_love img {
+    max-width: 100%;
+    max-height: 100%;
 }
 h2 {
     color: #3d3d3c;
@@ -905,4 +909,23 @@ h2 {
         margin-top: 45rem;
     }
     
+}
+@media screen and (min-width:1920px) {
+    #header > a {
+        margin-left: 25%;
+    }
+    .brands {
+        width: 80%;
+        margin-left: 15rem;
+        margin-top: 2.5rem;
+    }
+    #prev {
+        left: 8rem;
+    }
+    #next {
+        right: 8rem;
+    }
+    #prev, #next {
+        top: 48%;
+    }
 }
