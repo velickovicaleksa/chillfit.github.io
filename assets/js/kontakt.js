@@ -61,10 +61,12 @@ let imeSredi = document.getElementById("tekst_ime");
 imeSredi.addEventListener("blur",function(){
     var imeValidacija = /^[A-ZŠĐŽĆČ]{1}[a-zšđžčć]{2,9}(\s[A-ZŠĐŽĆČ]{1}[a-zšđžčć]{2,9})?$/;
     if(imeValidacija.test(imeSredi.value)){
-        //document.getElementById("posalji").removeAttribute("disabled");
-        //document.getElementById("posalji").classList.remove("disabled");
         imeSredi.style.border="2px solid green";
         document.getElementsByClassName("dangermsg")[0].textContent ="";
+    }
+    else if(imeSredi.value.length==0){
+        imeSredi.style.border="2px solid red";
+        document.getElementsByClassName("dangermsg")[0].textContent = "Ostavili ste prazno polje.";
     }
     else {
         imeSredi.style.border="2px solid red";
@@ -78,10 +80,12 @@ let prezimeSredi = document.getElementById("tekst_prezime");
 prezimeSredi.addEventListener("blur",function(){
     var prezimeValidacija = /^[A-ZŠĐŽĆČ]{1}[a-zšđžčć]{3,11}(\s[A-ZŠĐŽĆČ]{1}[a-zšđžčć]{3,11})?$/;
     if(prezimeValidacija.test(prezimeSredi.value)){
-        //document.getElementById("posalji").removeAttribute("disabled");
-        //document.getElementById("posalji").classList.remove("disabled");
         prezimeSredi.style.border="2px solid green";
         document.getElementsByClassName("dangermsg")[1].textContent ="";
+    }
+    else if(prezimeSredi.value.length==0){
+        prezimeSredi.style.border="2px solid red";
+        document.getElementsByClassName("dangermsg")[1].textContent = "Ostavili ste prazno polje.";
     }
     else {
         prezimeSredi.style.border="2px solid red";
@@ -94,10 +98,12 @@ let emailSredi = document.getElementById("tekst_mejl");
 emailSredi.addEventListener("blur",function(){
     var emailValidacija = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     if(emailValidacija.test(emailSredi.value)){
-        //document.getElementById("posalji").removeAttribute("disabled");
-        //document.getElementById("posalji").classList.remove("disabled");
         emailSredi.style.border="2px solid green";
         document.getElementsByClassName("dangermsg")[2].textContent ="";
+    }
+    else if(emailSredi.value.length==0){
+        emailSredi.style.border="2px solid red";
+        document.getElementsByClassName("dangermsg")[2].textContent = "Ostavili ste prazno polje.";
     }
     else {
         emailSredi.style.border="2px solid red";
@@ -109,23 +115,25 @@ emailSredi.addEventListener("blur",function(){
 let radioSredi = document.getElementsByName("pol");
 for(let index of radioSredi) {
     index.addEventListener("change",function(){
-        //if(index.checked) {
-            //document.getElementById("posalji").removeAttribute("disabled");
-            //document.getElementById("posalji").classList.remove("disabled");
-        //}
         srediDugme();});
 }
 
 let srediBroj = document.getElementById("lozinka");
 let validacijaBroj = /^06\d{7,8}$/;
 srediBroj.addEventListener("blur", function(){
-    if(validacijaBroj.test(srediBroj.value)){
-        srediBroj.style.border="2px solid green";
-        document.getElementsByClassName("dangermsg")[3].textContent ="";
+    if(srediBroj.value.length>0){
+        if(validacijaBroj.test(srediBroj.value)){
+            srediBroj.style.border="2px solid green";
+            document.getElementsByClassName("dangermsg")[3].textContent ="";
+        }
+        else {
+            srediBroj.style.border="2px solid red";
+            document.getElementsByClassName("dangermsg")[3].textContent ="Broj mora biti u formatu (06..) i imati minimum 9, a maksimalno 10 cifara";
+        }
     }
-    else {
-        srediBroj.style.border="2px solid red";
-        document.getElementsByClassName("dangermsg")[3].textContent ="Broj mora biti u formatu (06..) i imati minimum 9, a maksimalno 10 cifara";
+    if(srediBroj.value.length==0){
+        document.getElementsByClassName("dangermsg")[3].textContent ="";
+        srediBroj.style.border="2px solid #c0c0c0";
     }
 })
 
@@ -137,24 +145,15 @@ drzaveSredi.addEventListener("change",function(){
         gradoviSredi.addEventListener("change",function(){
             if(gradoviSredi.selectedIndex!==0) {
                 document.getElementsByClassName("dangermsg")[5].textContent ="";
-                //document.getElementById("posalji").removeAttribute("disabled","disabled");
-                //document.getElementById("posalji").classList.remove("disabled");
             }
             else {
-                //document.getElementById("posalji").setAttribute("disabled","disabled");
-                //document.getElementById("posalji").classList.add("disabled");
                 document.getElementsByClassName("dangermsg")[5].textContent ="Morate odabrati grad!";
             }
             srediDugme();
         });
-        //document.getElementById("posalji").removeAttribute("disabled");
-        //document.getElementById("posalji").classList.remove("disabled");
         document.getElementsByClassName("dangermsg")[4].textContent ="";
-
     }
     else {
-        //document.getElementById("posalji").setAttribute("disabled","disabled");
-        //document.getElementById("posalji").classList.add("disabled");
         document.getElementsByClassName("dangermsg")[4].textContent ="Morate odabrati drzavu!";
     }
     console.log(document.getElementById("gradovi"));
@@ -163,17 +162,12 @@ drzaveSredi.addEventListener("change",function(){
 });
 
 
-
 let srediCek = document.getElementById("politika");
 srediCek.addEventListener("change",function(){
     if(srediCek.checked) {
         document.getElementsByClassName("dangermsg")[6].textContent ="";
-        //document.getElementById("posalji").removeAttribute("disabled","disabled");
-        //document.getElementById("posalji").classList.remove("disabled");
     }
     else {
-        //document.getElementById("posalji").setAttribute("disabled","disabled");
-        //document.getElementById("posalji").classList.add("disabled");
         document.getElementsByClassName("dangermsg")[6].textContent ="Obavezno polje";
     }
     srediDugme();
@@ -182,35 +176,22 @@ srediCek.addEventListener("change",function(){
 let srediTekst = document.getElementById("polje_tekst");
 var textareaValidacija = /^[A-Z][\s\S]{19,999}$/;
 srediTekst.addEventListener("blur",function(){
-    if(textareaValidacija.test(srediTekst.value)) {
+    if(srediTekst.value.length>0){
+        if(textareaValidacija.test(srediTekst.value)) {
+            document.getElementsByClassName("dangermsg")[7].textContent ="";
+            srediTekst.style.border="2px solid green";
+        }
+        else {
+            document.getElementsByClassName("dangermsg")[7].textContent ="Poruka može sadržati minimum 20, a maksimum 1000 karaktera i mora početi velikim slovom.";
+            srediTekst.style.border="2px solid red";
+        }
+    }
+    if(srediTekst.value.length==0){
         document.getElementsByClassName("dangermsg")[7].textContent ="";
-        srediTekst.style.border="2px solid green";
-    }
-    else {
-        document.getElementsByClassName("dangermsg")[7].textContent ="Poruka može sadržati minimum 20, a maksimum 1000 karaktera i mora početi velikim slovom.";
-        srediTekst.style.border="2px solid red";
-    }
+        srediTekst.style.border="2px solid #c0c0c0";
+    }  
 });
-/*function srediDugme() {
-    let imeSredi = document.getElementById("tekst_ime");
-    let prezimeSredi = document.getElementById("tekst_prezime");
-    let emailSredi = document.getElementById("tekst_mejl");
-    var imeValidacija = /^[A-ZŠĐŽĆČ]{1}[a-zšđžčć]{2,9}(\s[A-ZŠĐŽĆČ]{1}[a-zšđžčć]{2,9})?$/;
-    var emailValidacija = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    let radioSredi = document.getElementsByName("pol");
-    let drzaveSredi = document.getElementById("drzave");
-    let gradoviSredi = document.getElementById("gradovi");
-    let srediCek = document.getElementById("politika");
-    if(imeValidacija.test(imeSredi) && imeValidacija.test(prezimeSredi) && emailValidacija.test(emailSredi) && radioSredi.checked && drzaveSredi.selectedIndex!=0 && 
-    gradoviSredi.selectedIndex!=0 && srediCek.checked){
-        document.getElementById("posalji").removeAttribute("disabled","disabled");
-        document.getElementById("posalji").classList.remove("disabled");
-    }
-    else {
-        document.getElementById("posalji").setAttribute("disabled","disabled");
-        document.getElementById("posalji").classList.add("disabled");
-    }
-}*/
+
 
 function srediDugme() {
     let imeSredi = document.getElementById("tekst_ime").value;
