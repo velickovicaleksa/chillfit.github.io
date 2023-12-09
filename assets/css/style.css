@@ -377,7 +377,7 @@ h2 {
     margin-left: 2rem;
     color:#3d3d3c;
 }
-#kontakt p:nth-of-type(2) {
+#kontakt p:nth-of-type(2), #kontakt p:nth-of-type(3){
     margin-left: 0;
 }
 #kontakt i {
