@@ -174,7 +174,7 @@ srediCek.addEventListener("change",function(){
 
 let srediTekst = document.getElementById("polje_tekst");
 var textareaValidacija = /^[A-Z][\s\S]{19,999}$/;
-srediTekst.addEventListener("blur",function(){
+/*srediTekst.addEventListener("blur",function(){
     if(srediTekst.value.length>0){
         if(textareaValidacija.test(srediTekst.value)) {
             document.getElementsByClassName("dangermsg")[7].textContent ="";
@@ -189,7 +189,7 @@ srediTekst.addEventListener("blur",function(){
         document.getElementsByClassName("dangermsg")[7].textContent ="";
         srediTekst.style.border="2px solid #c0c0c0";
     }  
-});
+});*/
 
 
 function srediDugme() {
@@ -235,17 +235,19 @@ function sabmituj(){
     var textareaValidacija = /^[A-Z][\s\S]{19,999}$/;
     if(document.getElementById("polje_tekst").value.length!=0){
         if(!textareaValidacija.test(document.getElementById("polje_tekst").value)){
+            document.getElementsByClassName("dangermsg")[7].textContent ="Poruka može sadržati minimum 20, a maksimum 1000 karaktera i mora početi velikim slovom.";
+            srediTekst.style.border="2px solid red";
             return false;
         }
         else {
             event.preventDefault();
-        document.getElementById("success").style.display = "block";
+            document.getElementsByClassName("dangermsg")[7].textContent ="";
+            srediTekst.style.border="2px solid green";
+            document.getElementById("success").style.display = "block";
         }
     }
     else {
         event.preventDefault();
-        document.getElementById("success").style.display = "block";
-        
-        
+        document.getElementById("success").style.display = "block";  
     }
 }
