@@ -121,20 +121,19 @@ for(let index of radioSredi) {
 let srediBroj = document.getElementById("lozinka");
 let validacijaBroj = /^06\d{7,8}$/;
 srediBroj.addEventListener("blur", function(){
-    if(srediBroj.value.length>0){
         if(validacijaBroj.test(srediBroj.value)){
             srediBroj.style.border="2px solid green";
             document.getElementsByClassName("dangermsg")[3].textContent ="";
+        }
+        else if (srediBroj.value.length==0) {
+            srediBroj.style.border="2px solid red";
+            document.getElementsByClassName("dangermsg")[3].textContent = "Ostavili ste prazno polje.";
         }
         else {
             srediBroj.style.border="2px solid red";
             document.getElementsByClassName("dangermsg")[3].textContent ="Broj mora biti u formatu (06..) i imati minimum 9, a maksimalno 10 cifara";
         }
-    }
-    if(srediBroj.value.length==0){
-        document.getElementsByClassName("dangermsg")[3].textContent ="";
-        srediBroj.style.border="2px solid #c0c0c0";
-    }
+    srediDugme();
 })
 
 let drzaveSredi = document.getElementById("drzave");
@@ -197,8 +196,10 @@ function srediDugme() {
     let imeSredi = document.getElementById("tekst_ime").value;
     let prezimeSredi = document.getElementById("tekst_prezime").value;
     let emailSredi = document.getElementById("tekst_mejl").value;
+    let brojSredi = document.getElementById("lozinka").value;
     var imeValidacija = /^[A-ZŠĐŽĆČ]{1}[a-zšđžčć]{2,9}(\s[A-ZŠĐŽĆČ]{1}[a-zšđžčć]{2,9})?$/;
     var emailValidacija = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    let validacijaBroj = /^06\d{7,8}$/;
     let radioSredi = document.getElementsByName("pol");
     let drzaveSredi = document.getElementById("drzave");
     let gradoviSredi = document.getElementById("gradovi");
@@ -216,6 +217,7 @@ function srediDugme() {
         imeValidacija.test(imeSredi) &&
         imeValidacija.test(prezimeSredi) &&
         emailValidacija.test(emailSredi) &&
+        validacijaBroj.test(brojSredi) &&
         isRadioChecked &&
         drzaveSredi.selectedIndex !== 0 &&
         gradoviSredi.selectedIndex !== 0 &&
@@ -230,27 +232,20 @@ function srediDugme() {
 }
 
 function sabmituj(){
-
-    if(document.getElementById("lozinka").value.length!=0){
-        if(!validacijaBroj.test(document.getElementById("lozinka").value)){
+    var textareaValidacija = /^[A-Z][\s\S]{19,999}$/;
+    if(document.getElementById("polje_tekst").value.length!=0){
+        if(!textareaValidacija.test(document.getElementById("polje_tekst").value)){
             return false;
+        }
+        else {
+            event.preventDefault();
+        document.getElementById("success").style.display = "block";
         }
     }
     else {
         event.preventDefault();
         document.getElementById("success").style.display = "block";
+        
+        
     }
-
-    if(document.getElementById("tekst_polje").value.length!=0){
-        if(!textareaValidacija.test(document.getElementById("tekst_polje").value)){
-            return false;
-        }
-    }
-    else {
-        event.preventDefault();
-        document.getElementById("success").style.display = "block";
-    }
-    
-
-    
 }
